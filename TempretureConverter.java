@@ -12,6 +12,8 @@ public class TempretureConverter extends JFrame{
     private JButton clear;
 
     public TempretureConverter(){
+        super("Tempreture Converter");
+        setLayout(null);
         fahrenheit = new JLabel();
         fahrenheitBox = new JTextField();
         Convert = new JButton();
@@ -19,21 +21,19 @@ public class TempretureConverter extends JFrame{
         celsiusBox = new JTextField();
         clear = new JButton();
 
-        //======== this ========
-        var contentPane = getContentPane();
-        contentPane.setLayout(null);
+
 
         //---- fahrenheit ----
         fahrenheit.setText("fahrenheit");
-        contentPane.add(fahrenheit);
+        add(fahrenheit);
         fahrenheit.setBounds(45, 5, 85, 35);
-        contentPane.add(fahrenheitBox);
+        add(fahrenheitBox);
         fahrenheitBox.setBounds(40, 40, 95, 35);
 
         //---- Convert ----
         Convert.setText("Convert");
         Convert.setBackground(new Color(153, 153, 153));
-        contentPane.add(Convert);
+        add(Convert);
         Convert.setBounds(145, 40, Convert.getPreferredSize().width, 30);
         Convert.addActionListener(
                 new ActionListener() {
@@ -60,15 +60,15 @@ public class TempretureConverter extends JFrame{
 
         //---- celsius ----
         celsius.setText("celsius");
-        contentPane.add(celsius);
+        add(celsius);
         celsius.setBounds(250, 15, 55, 21);
-        contentPane.add(celsiusBox);
+        add(celsiusBox);
         celsiusBox.setBounds(240, 40, 100, 35);
 
         //---- clear ----
         clear.setText("clear");
         clear.setBackground(new Color(255, 153, 153));
-        contentPane.add(clear);
+        add(clear);
         clear.setBounds(new Rectangle(new Point(150, 80), clear.getPreferredSize()));
         clear.addActionListener(
                 new ActionListener() {
@@ -79,24 +79,7 @@ public class TempretureConverter extends JFrame{
                     }
                 }
         );
-        {
-            // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
-                Rectangle bounds = contentPane.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-            }
-            Insets insets = contentPane.getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            contentPane.setMinimumSize(preferredSize);
-            contentPane.setPreferredSize(preferredSize);
-        }
-        pack();
-        setLocationRelativeTo(getOwner());
 
     }
-
 
 }
